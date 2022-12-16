@@ -1,15 +1,40 @@
+import { ManagerGuard } from './guards/manager.guard';
+import { DevGuard } from './guards/dev.guard';
+import { CadastrarComponent } from './views/cadastrar/cadastrar.component';
+import { AdminComponent } from './views/admin/admin.component';
+import { LoginComponent } from './views/login/login.component';
+import { HomeComponent } from './views/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
+    redirectTo: 'signin'
   },
   {
     path: 'home',
-    loadChildren: () => import('./views/home/home.module').then(m => m.HomeModule)
+    component: HomeComponent
+  },
+  {
+    path: 'dash',
+    component: DashboardComponent,
+    canActivate: [ DevGuard ]
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [ ManagerGuard ]
+  },
+  {
+    path: 'signin',
+    component: LoginComponent
+  },
+  {
+    path: 'signup',
+    component: CadastrarComponent
   }
 ];
 

@@ -1,0 +1,14 @@
+<form [formGroup]="formUser">
+    <input type="text" placeholder="Digite seu nome" formControlName="displayName"><br><br>
+    <input type="email" placeholder="Digite seu email" formControlName="email"><br><br>
+    <input type="password" placeholder="Digite sua senha" formControlName="password"><br><br>
+    <input type="text" placeholder="URL da sua foto" formControlName="photoURL"><br><br>
+    <select formControlName="accessLevel">
+        <option selected="true" disabled value="">Selecione o nivel de acesso</option>
+        <option value="USER">Usuário</option>
+        <option value="DEV">Desenvolvedor</option>
+        <option value="MANAGER">Gerenciador</option>
+    </select><br><br>
+    <button (click)="submit()">Cadastrar</button>
+</form>
+{{ formUser.value | json }}

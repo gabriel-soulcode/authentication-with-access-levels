@@ -1,0 +1,7 @@
+
+<form [formGroup]="formLogin">
+    <input type="email" placeholder="Digite seu email" formControlName="email"><br><br>
+    <input type="password" placeholder="Digite sua senha" formControlName="password"><br><br>
+    <button (click)="entrar()">Entrar</button><br><br>
+</form>
+{{ formLogin.value | json }}
